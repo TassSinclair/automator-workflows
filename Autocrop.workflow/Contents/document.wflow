@@ -61,7 +61,7 @@
 					<key>COMMAND_STRING</key>
 					<string>for f in "$@"
 do
-    /usr/local/bin/convert $f -fuzz 1% -trim +repage $f
+  /usr/local/bin/convert $f -fuzz 1% -trim +repage $f
 done</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>

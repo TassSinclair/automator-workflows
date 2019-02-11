@@ -61,9 +61,13 @@
 					<key>COMMAND_STRING</key>
 					<string>for f in "$@"
 do 
-  /usr/local/bin/sox "$f" "${f%.*}.flac"
-done
-</string>
+  dir=`dirname "$f"`
+  /usr/local/bin/ffmpeg -i "$f" -i "$dir/cover.jpg" \
+    -map 0:0 -map 1:0 -c copy -id3v2_version 3 \
+    -metadata:s:v title="Album cover" \
+    -metadata:s:v comment="Cover (front)" "${f%.*}.tmp.mp3"
+    mv "${f%.*}.tmp.mp3" "$f"
+done</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
 					<key>inputMethod</key>
@@ -88,7 +92,7 @@ done
 				<key>Class Name</key>
 				<string>RunShellScriptAction</string>
 				<key>InputUUID</key>
-				<string>D55B505B-A7EA-4A1F-B5F1-A2AB47433B09</string>
+				<string>B90EBB65-8996-4B30-94C1-EFD4D13837EC</string>
 				<key>Keywords</key>
 				<array>
 					<string>Shell</string>
@@ -98,9 +102,11 @@ done
 					<string>Unix</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>1A11056D-83EB-4174-A605-D7B82D80F5A4</string>
+				<string>7C545727-51B8-46BA-B6B4-8CEF464058D7</string>
+				<key>ShowWhenRun</key>
+				<false/>
 				<key>UUID</key>
-				<string>23F1F40D-3FEC-4B07-BFDA-21FB97EA1242</string>
+				<string>8E113033-F135-43A5-9F8F-8292727EC703</string>
 				<key>UnlocalizedApplications</key>
 				<array>
 					<string>Automator</string>

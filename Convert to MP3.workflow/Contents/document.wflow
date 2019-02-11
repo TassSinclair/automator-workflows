@@ -61,7 +61,8 @@
 					<key>COMMAND_STRING</key>
 					<string>for f in "$@"
 do 
-    /usr/local/bin/ffmpeg -i "$f" -vn -ar 44100 -ac 2 -ab 192k -f mp3 "${f%.*}.mp3"
+  /usr/local/bin/ffmpeg -i "$f" \
+    -vn -ar 44100 -ac 2 -ab 192k -f mp3 "${f%.*}.mp3"
 done
 </string>
 					<key>CheckedForUserDefaultShell</key>
