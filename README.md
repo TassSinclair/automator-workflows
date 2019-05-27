@@ -15,6 +15,9 @@ do
 done
 ```
 
+## Ask for resized image size
+Raises a dialoge to ask what size we should use to create smaller copies of selected images. Used by [Make smaller copy](#make-smaller-copy).
+
 ## Autocrop
 Crops empty space from the edges of image files. Select one or more image files in Finder to use. Requires [ImageMagick](https://www.imagemagick.org/) (install with `brew install imagemagick`).
 ```bash
@@ -41,5 +44,16 @@ for f in "$@"
 do
   /usr/local/bin/ffmpeg -i "$f" \
     -vn -ar 44100 -ac 2 -ab 192k -f mp3 "${f%.*}.mp3"
+done
+```
+
+## Make smaller copy
+Makes smaller copies of image files. Select one or more image files in Finder to use. Uses [Ask for resized image](#ask-for-resized-image-size) to capture the desired maaximum length or width of the smaller copy. Requires [ImageMagick](https://www.imagemagick.org/) (install with `brew install imagemagick`).
+
+```bash
+size=`automator ~/Library/Services/Ask\ for\ resized\ image\ size.workflow`
+for f in "$@"
+do
+    /usr/local/bin/convert "$f" -resize ${size}x${size} -quality 85 "${f%.*}-${size}.${f##*.}"
 done
 ```
