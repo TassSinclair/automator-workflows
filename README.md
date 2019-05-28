@@ -52,6 +52,9 @@ Makes smaller copies of image files. Select one or more image files in Finder to
 
 ```bash
 size=`automator ~/Library/Services/Ask\ for\ resized\ image\ size.workflow`
+if [ ! $size ]; then
+  exit 1
+fi
 for f in "$@"
 do
     /usr/local/bin/convert "$f" -resize ${size}x${size} -quality 85 "${f%.*}-${size}.${f##*.}"
