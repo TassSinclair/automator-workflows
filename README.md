@@ -1,6 +1,8 @@
 # Automator Workflows
 Clone this repository to interact with these Workflow objects properly, as MacOS will interpret the directories as Automator Workflow [Bundles](https://en.wikipedia.org/wiki/Bundle_(macOS)).
 
+These will need to be copied (or cloned) into `~/Library/Services/` in order to be picked up automatically.
+
 ## Add cover from cover.jpg
 Adds cover art as id3v2 tag to mp3 files. Select one or more mp3 files in Finder to use. Ensure "cover.jpg" file is in the same directory. Requires [FFmpeg](https://www.ffmpeg.org/) (install with `brew install ffmpeg`).
 ```bash
